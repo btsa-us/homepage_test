@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BTSA | Home</title>
+<style>
+  /* ---- Brand typeface: GT America ----
+     GT America is a licensed font (Grilli Type). Host the licensed files
+     alongside this page (e.g. in a /fonts folder) or via your Shopify assets,
+     then these @font-face rules will pick them up. Adjust the url() paths to
+     wherever you upload the files. Falls back to Helvetica/Arial until loaded. */
+  @font-face {
+    font-family: 'GT America';
+    src: url('fonts/GT-America-Standard-Regular.woff2') format('woff2'),
+         url('fonts/GT-America-Standard-Regular.woff') format('woff');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'GT America';
+    src: url('fonts/GT-America-Standard-Medium.woff2') format('woff2'),
+         url('fonts/GT-America-Standard-Medium.woff') format('woff');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'GT America';
+    src: url('fonts/GT-America-Standard-Bold.woff2') format('woff2'),
+         url('fonts/GT-America-Standard-Bold.woff') format('woff');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'GT America Expanded';
+    src: url('fonts/GT-America-Expanded-Bold.woff2') format('woff2'),
+         url('fonts/GT-America-Expanded-Bold.woff') format('woff');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #141414;
+    --paper: #ffffff;
+    --mute: #8a857a;
+    --soft: #f1f0ee;
+    --tile: #f4f3f1;
+    --line: #e2e0d9;
+    --hairline: #d8d6cf;
+    --maxw: 1280px;
+    --gutter: 40px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'GT America', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------------- NAV ---------------- */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 18px var(--gutter);
+  }
+  .nav-left { display: flex; gap: 22px; font-size: 14px; }
+  .nav-left a:hover { opacity: .55; }
+  .nav-logo { text-align: center; font-weight: 800; letter-spacing: .06em; font-size: 20px; }
+  .nav-right { justify-self: end; font-size: 14px; display: flex; align-items: center; gap: 7px; }
+  .nav-right a:hover { opacity: .55; }
+  .nav-right .dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg,#d01c1f,#fade85 60%,#7b8a3f); display: inline-block; }
+
+  /* ---------------- HERO ---------------- */
+  .hero { max-width: var(--maxw); margin: 0 auto; padding: 28px var(--gutter) 0; }
+  .hero-row { position: relative; display: flex; align-items: center; justify-content: center; }
+  .hero-img { width: 100%; height: auto; object-fit: contain; }
+  .hero-sub { text-align: center; margin-top: 34px; font-size: clamp(18px,2vw,26px); line-height: 1.5; }
+
+  /* ---------------- FEATURED ---------------- */
+  .featured { max-width: var(--maxw); margin: 0 auto; padding: 70px var(--gutter) 30px; }
+  .featured-head { display: flex; align-items: center; justify-content: center; gap: 20px; font-size: clamp(16px,1.8vw,22px); }
+  .featured-head .rule { width: 110px; height: 1px; background: var(--ink); }
+  .featured-head .toggle { display: flex; gap: 16px; }
+  .featured-head .toggle button { background: none; border: 0; font: inherit; cursor: pointer; padding: 0; color: var(--mute); }
+  .featured-head .toggle button.on { color: var(--ink); text-decoration: underline; text-underline-offset: 5px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 36px; }
+  .pcard .ph { background: var(--tile); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .pcard .ph img { width: 78%; height: 78%; object-fit: contain; mix-blend-mode: multiply; }
+  .pcard.tank .ph img { width: 60%; height: 60%; }
+  .pcard .cap { text-align: center; margin-top: 18px; font-size: 15px; line-height: 1.5; }
+  .pcard .cap .style { }
+  .pcard .cap .desc { }
+
+  /* ---------------- COLOR DETECTOR ---------------- */
+  .detector { padding: 80px 0 40px; }
+  .detector-inner { display: flex; flex-direction: column; align-items: center; }
+  .stageB { position: relative; width: 72%; max-width: 760px; }
+  .stageB .frame { position: relative; width: 100%; aspect-ratio: 4/5; background: #5a6a3a; overflow: hidden; }
+  .stageB .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .stageB svg.hotspots { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .stageB svg.hotspots path { fill: transparent; stroke: transparent; cursor: pointer; transition: fill .18s ease, stroke .18s ease; }
+  .stageB svg.hotspots path:hover, .stageB svg.hotspots path.active { fill: rgba(255,255,255,.14); stroke: rgba(255,255,255,.9); stroke-width: 1.5; }
+  .connector { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; }
+  .connector line { stroke: #fff; stroke-width: 1.5; opacity: 0; transition: opacity .15s ease; }
+  .connector circle { fill: #fff; opacity: 0; transition: opacity .15s ease; }
+  .connector.show line, .connector.show circle { opacity: 1; }
+  .pinChip { position: absolute; top: 0; left: 0; z-index: 4; pointer-events: none; background: #fff; border: 1px solid var(--line); padding: 12px; display: flex; gap: 12px; align-items: center; width: 210px; opacity: 0; transform: translateY(4px); transition: opacity .15s ease, transform .15s ease; }
+  .pinChip.show { opacity: 1; transform: none; }
+  .pinChip .pc-sw { flex: 0 0 46px; height: 58px; border: 1px solid rgba(0,0,0,.06); }
+  .pinChip .pc-name { font-size: 16px; }
+  .pinChip .pc-pms { font-size: 11px; color: var(--mute); margin-top: 4px; letter-spacing: .04em; }
+  .pinChip .pc-style { font-size: 10px; color: var(--mute); margin-top: 7px; letter-spacing: .1em; text-transform: uppercase; }
+  .swatches { display: flex; gap: 12px; margin-top: 30px; justify-content: center; }
+  .swatches button { width: 26px; height: 26px; border: 1px solid var(--hairline); background: transparent; cursor: pointer; padding: 0; outline-offset: 3px; transition: transform .15s ease, box-shadow .15s ease; }
+  .swatches button:hover { transform: translateY(-2px); }
+  .swatches button.on { box-shadow: 0 0 0 1px var(--paper), 0 0 0 3px var(--ink); }
+  .detector-copy { text-align: center; max-width: 900px; margin: 30px auto 0; padding: 0 20px; }
+  .detector-copy h2 { font-size: clamp(34px, 5vw, 62px); font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+  .detector-copy .sub { font-size: clamp(16px,1.6vw,21px); margin-top: 22px; line-height: 1.55; }
+
+  /* ---------------- DISCOVER MORE ---------------- */
+  .discover { max-width: var(--maxw); margin: 0 auto; padding: 80px var(--gutter) 70px; }
+  .discover-head { text-align: center; font-size: clamp(16px,1.8vw,22px); }
+  .discover-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 22px; }
+  .discover-labels .dl { text-align: center; font-weight: 400; letter-spacing: .06em; font-size: clamp(15px,1.6vw,19px); }
+  .discover-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+  .discover-imgs a { display: block; overflow: hidden; }
+  .discover-imgs img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: transform .5s ease; }
+  .discover-imgs a:hover img { transform: scale(1.03); }
+
+  /* ---------------- FOOTER ---------------- */
+  .footer { border-top: 1px solid var(--line); margin-top: 40px; }
+  .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 56px var(--gutter) 30px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; }
+  .footer .brand-logo { font-weight: 800; letter-spacing: .06em; font-size: 20px; }
+  .footer .brand-tag { font-size: 13px; color: #444; margin-top: 16px; line-height: 1.6; }
+  .footer .brand-ig { font-size: 13px; margin-top: 18px; display: flex; align-items: center; gap: 7px; }
+  .footer .brand-sub { font-size: 13px; margin-top: 18px; text-decoration: underline; text-underline-offset: 4px; }
+  .footer .col h4 { font-size: 12px; letter-spacing: .12em; color: var(--mute); font-weight: 600; margin-bottom: 18px; }
+  .footer .col ul { list-style: none; }
+  .footer .col li { margin-bottom: 13px; font-size: 14px; }
+  .footer .col a:hover { opacity: .55; }
+  .footer-bar { max-width: var(--maxw); margin: 0 auto; padding: 18px var(--gutter); border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: #555; }
+  .footer-bar .links { display: flex; gap: 26px; }
+
+  /* ---------------- RESPONSIVE ---------------- */
+  @media (max-width: 900px){
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px){
+    :root { --gutter: 20px; }
+    .hero-img, .stageB { width: 100%; }
+    .grid4 { grid-template-columns: 1fr 1fr; }
+    .discover-labels, .discover-imgs { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="#">Shop</a>
+    <a href="#">Account</a>
+    <a href="#">Contact</a>
+    <a href="#">Cart (100)</a>
+  </div>
+  <div class="nav-logo">BTSA</div>
+  <div class="nav-right">
+    <a href="#detector"><span class="dot"></span> Pick a Pantone</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-row">
+    <img class="hero-img" src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/hero.jpg?v=1782247411" alt="Behind the Scenes Apparel">
+  </div>
+  <p class="hero-sub">Premium Made in USA Blanks.<br>Designed and Manufactured in Los Angeles.</p>
+</header>
+
+<!-- ===================== FEATURED STYLES ===================== -->
+<section class="featured">
+  <div class="featured-head">
+    <span>Featured Styles</span>
+    <span class="rule"></span>
+    <span class="toggle">
+      <button class="on" data-aud="men">Men</button>
+      <button data-aud="women">Women</button>
+    </span>
+  </div>
+  <div class="grid4">
+    <div class="pcard">
+      <a href="#" class="ph"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/JOY001_Washed_Black_copy_2.png?v=1780432419" alt="JOY 001"></a>
+      <div class="cap"><div class="style">JOY 001</div><div class="desc">Heavy Weight<br>Short Sleeve</div></div>
+    </div>
+    <div class="pcard">
+      <a href="#" class="ph"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/RFLC_010_WB_FRONT.png?v=1780433284" alt="RFLC 011"></a>
+      <div class="cap"><div class="style">RFLC 011</div><div class="desc">Heavy Weight<br>Oversized Hoodie</div></div>
+    </div>
+    <div class="pcard tank">
+      <a href="#" class="ph"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/PFD_BTSA004-V2-JOY_JET_BLACK.png?v=1782247174" alt="JOY 004"></a>
+      <div class="cap"><div class="style">JOY 004</div><div class="desc">Heavy Weight<br>Muscle Tank</div></div>
+    </div>
+    <div class="pcard">
+      <a href="#" class="ph"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/RFLC016_WJet_Black_copy.png?v=1782247279" alt="MFLC 036"></a>
+      <div class="cap"><div class="style">MFLC 036</div><div class="desc">Heavy Weight<br>Crewneck</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COLOR DETECTOR ===================== -->
+<section class="detector" id="detector">
+  <div class="detector-inner">
+    <div class="stageB" id="stageB">
+      <div class="frame" id="frame">
+        <img id="modelImg" alt="Model wearing BTSA garments">
+        <svg class="hotspots" id="hotspots" viewBox="0 0 400 500" preserveAspectRatio="none"></svg>
+      </div>
+      <svg class="connector" id="connector"></svg>
+      <div class="pinChip" id="pinChip">
+        <div class="pc-sw" id="pcSwatch"></div>
+        <div class="pc-info">
+          <div class="pc-name" id="pcName">—</div>
+          <div class="pc-pms" id="pcPms"></div>
+          <div class="pc-style" id="pcStyle"></div>
+        </div>
+      </div>
+    </div>
+    <div class="swatches" id="swatches"></div>
+  </div>
+  <div class="detector-copy">
+    <h2>Custom Color. Any Color.</h2>
+    <p class="sub">Develop your own color. Your way.<br>
+    Discover any shade through our Pantone TCX library and bring your ideas to life<br>
+    by transforming any BTSA style into a custom garment-dyed color.<br>
+    Your next color is only one click away.</p>
+  </div>
+</section>
+
+<!-- ===================== DISCOVER MORE ===================== -->
+<section class="discover">
+  <div class="discover-head">Discover More</div>
+  <div class="discover-labels">
+    <div class="dl">MEN</div>
+    <div class="dl">WOMEN</div>
+  </div>
+  <div class="discover-imgs">
+    <a href="#"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/men.jpg?v=1782247366" alt="Shop Men"></a>
+    <a href="#"><img src="https://cdn.shopify.com/s/files/1/0770/7089/3249/files/women.jpg?v=1782247363" alt="Shop Women"></a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand">
+      <div class="brand-logo">BTSA</div>
+      <div class="brand-tag">Premium Blanks.<br>Designed and Made in Los Angeles.</div>
+      <div class="brand-ig">◎ @btsa.la</div>
+      <div class="brand-sub"><a href="#">Subscribe</a></div>
+    </div>
+    <div class="col">
+      <h4>COMPANY</h4>
+      <ul>
+        <li><a href="#">About BTSA</a></li>
+        <li><a href="#">Our Ethos</a></li>
+        <li><a href="#">Manufacturing</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>SHOP</h4>
+      <ul>
+        <li><a href="#">Wholesale</a></li>
+        <li><a href="#">Catalog</a></li>
+        <li><a href="#">Custom color program</a></li>
+        <li><a href="#">Sample program</a></li>
+        <li><a href="#">Size chart</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>GENERAL</h4>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Policies &amp; Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 Behind The Scenes Apparel</span>
+    <span class="links"><a href="#">Privacy</a><a href="#">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===== Featured Styles Men/Women toggle (visual only for mockup) ===== */
+document.querySelectorAll('.featured-head .toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.featured-head .toggle button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+/* ===== COLOR DETECTOR ===== */
+const MODELS = [
+  {
+    swatch: "#7B8A3F",
+    img: "https://cdn.shopify.com/s/files/1/0770/7089/3249/files/color_detector_olive.png?v=1782235510",
+    zones: [
+      { garment:"DCJ023",  name:"Warm Olive",    pms:"15-0646 TCX", hex:"#C7B63C",
+        path:"M264,183 L287,192 L304,206 L315,225 L321,242 L334,292 L323,299 L297,309 L284,313 L276,313 L279,321 L274,339 L268,361 L266,376 L265,417 L265,451 L260,455 L246,456 L229,455 L204,454 L168,457 L155,458 L141,457 L116,453 L97,445 L95,442 L85,439 L89,428 L87,422 L88,400 L124,392 L121,363 L125,354 L121,335 L118,311 L109,270 L133,289 L177,285 L195,274 L221,251 L231,235 L234,223 L249,205 L261,187 Z" },
+      { garment:"DCJ023",  name:"Warm Olive",    pms:"15-0646 TCX", hex:"#C7B63C",
+        path:"M64,306 L45,297 L58,226 L63,222 L62,234 L58,251 L58,269 L60,284 Z" },
+      { garment:"MFLC036", name:"Green Envy",    pms:"16-0541 TCX", hex:"#A19436",
+        path:"M216,141 L225,146 L232,151 L238,154 L247,155 L247,162 L259,169 L267,180 L266,184 L260,187 L251,202 L239,215 L232,225 L229,240 L221,251 L208,263 L190,276 L173,284 L151,288 L133,288 L108,270 L113,303 L118,330 L123,353 L119,360 L121,390 L110,395 L97,397 L91,396 L86,400 L82,369 L77,368 L77,349 L66,333 L65,305 L58,270 L59,252 L64,234 L64,222 L58,220 L56,214 L65,201 L67,192 L83,164 L89,166 L92,163 L84,158 L97,142 L99,137 L107,135 L115,137 L122,135 L130,140 L136,154 L139,163 L139,179 L139,189 L151,199 L174,188 L178,183 L193,178 L195,173 L205,158 L215,146 Z" },
+      { garment:"MFLC714", name:"Dried Tobacco", pms:"18-0835 TCX", hex:"#997B38",
+        path:"M260,458 L263,467 L263,482 L268,499 L65,499 L68,487 L71,474 L76,465 L85,442 L93,441 L109,454 L121,458 L146,464 L191,465 L222,463 L238,459 L250,457 Z" },
+      { garment:"SHJ020",  name:"Acid Lime",     pms:"14-0340 TCX", hex:"#BBDF32",
+        path:"M243,457 L223,464 L199,464 L182,465 L163,465 L152,464 L133,460 L116,456 L107,449 L117,453 L134,456 L154,458 L175,457 L201,455 L238,456 Z" }
+    ]
+  },
+  {
+    swatch: "#D01C1F",
+    img: "https://cdn.shopify.com/s/files/1/0770/7089/3249/files/240509_BTSA_RED_L01_0044.jpg?v=1782235360",
+    zones: [
+      { garment:"MFLC710", name:"Fiery Red",      pms:"18-1664 TCX", hex:"#D01C1F",
+        path:"M240,113 L260,138 L276,150 L292,179 L317,251 L329,303 L330,344 L328,368 L320,384 L308,399 L297,445 L274,488 L265,493 L254,487 L256,498 L215,499 L212,498 L219,478 L213,479 L209,476 L207,465 L233,414 L228,413 L218,410 L196,411 L183,411 L160,406 L156,403 L158,417 L163,422 L172,434 L191,464 L195,492 L195,499 L129,499 L80,431 L78,373 L60,329 L56,311 L56,291 L60,263 L61,242 L64,230 L75,203 L97,179 L110,184 L129,184 L126,171 L149,172 L164,182 L197,154 L213,151 L226,140 L235,133 L238,119 Z" },
+      { garment:"ROSR703", name:"Equestrian Red", pms:"19-1755 TCX", hex:"#9E1528",
+        path:"M313,432 L324,462 L300,452 L303,433 L307,431 Z" },
+      { garment:"ROSR703", name:"Equestrian Red", pms:"19-1755 TCX", hex:"#9E1528",
+        path:"M209,455 L190,457 L166,422 L169,414 L196,422 L206,422 L222,429 L212,449 Z" },
+      { garment:"ROJ701",  name:"Fiery Red",      pms:"18-1664 TCX", hex:"#D01C1F",
+        path:"M323,437 L321,421 L309,407 L305,422 L304,428 L311,429 L316,433 Z" },
+      { garment:"ROJ701",  name:"Fiery Red",      pms:"18-1664 TCX", hex:"#D01C1F",
+        path:"M224,425 L230,414 L207,412 L159,406 L163,418 L168,414 L176,413 L191,418 L206,420 L219,424 Z" }
+    ]
+  },
+  {
+    swatch: "#FADE85",
+    img: "https://cdn.shopify.com/s/files/1/0770/7089/3249/files/240509_BTSA_WHITE_L05_0343.jpg?v=1782235357",
+    zones: [
+      { garment:"ROSR704", name:"Cloud Cream",  pms:"12-0804 TCX", hex:"#E6DDC5",
+        path:"M326,44 L331,49 L343,56 L378,72 L382,84 L392,124 L393,207 L387,214 L366,218 L343,219 L325,217 L323,212 L321,195 L319,201 L311,218 L310,231 L306,235 L298,250 L292,270 L292,281 L297,291 L314,322 L318,341 L327,382 L318,392 L303,401 L274,408 L248,410 L212,408 L188,406 L159,400 L131,392 L114,383 L99,369 L104,358 L110,329 L109,321 L110,315 L111,306 L117,291 L119,271 L122,238 L125,208 L121,177 L127,151 L144,118 L160,99 L175,79 L191,50 L194,53 L210,54 L231,56 L268,57 L286,55 L320,45 Z" },
+      { garment:"JOY002",  name:"Coconut Milk", pms:"11-0608 TCX", hex:"#F1EEE6",
+        path:"M205,33 L223,34 L273,34 L285,33 L291,33 L307,26 L324,43 L311,48 L295,53 L273,56 L246,55 L226,54 L209,54 L198,52 L196,51 L203,39 Z" },
+      { garment:"JOY002",  name:"Coconut Milk", pms:"11-0608 TCX", hex:"#F1EEE6",
+        path:"M317,255 L325,219 L375,216 L392,212 L392,223 L387,267 L379,294 L368,298 L332,301 L305,303 L294,281 L292,272 L299,254 L311,255 Z" },
+      { garment:"JOY002",  name:"Coconut Milk", pms:"11-0608 TCX", hex:"#F1EEE6",
+        path:"M65,424 L73,436 L95,449 L134,467 L161,475 L216,482 L259,481 L292,477 L330,469 L334,466 L334,454 L339,448 L341,442 L332,426 L331,407 L325,390 L314,398 L295,403 L280,406 L263,410 L253,410 L226,410 L194,407 L174,404 L143,396 L127,390 L113,383 L103,374 L101,372 L95,377 L86,388 L79,397 L65,418 Z" },
+      { garment:"JOY002",  name:"Coconut Milk", pms:"11-0608 TCX", hex:"#F1EEE6",
+        path:"M95,376 L92,360 L101,327 L108,314 L109,300 L113,260 L121,226 L118,289 L113,301 L110,307 L110,319 L110,330 L107,344 L104,358 L101,365 L99,371 Z" },
+      { garment:"MFLC714", name:"Sunshine",     pms:"12-0727 TCX", hex:"#FADE85",
+        path:"M47,499 L58,477 L65,464 L67,460 L69,435 L81,443 L112,457 L151,474 L166,477 L213,483 L264,481 L318,474 L327,471 L334,468 L334,497 L331,499 L206,499 L129,499 L53,499 Z" }
+    ]
+  }
+];
+
+let current = 0;
+const dimg = document.getElementById('modelImg');
+const hotspots = document.getElementById('hotspots');
+const swatchWrap = document.getElementById('swatches');
+const stageB = document.getElementById('stageB');
+const frame = document.getElementById('frame');
+const connector = document.getElementById('connector');
+const pinChip = document.getElementById('pinChip');
+const pcSwatch = document.getElementById('pcSwatch');
+const pcName = document.getElementById('pcName');
+const pcPms = document.getElementById('pcPms');
+const pcStyle = document.getElementById('pcStyle');
+const VIEW_W = 400, VIEW_H = 500;
+let activeZone = null;
+
+function parsePath(d){
+  const nums = d.match(/-?\d+(\.\d+)?/g).map(Number);
+  const pts = [];
+  for (let i = 0; i < nums.length; i += 2) pts.push([nums[i], nums[i+1]]);
+  return pts;
+}
+function centroid(pts){
+  let a = 0, cx = 0, cy = 0;
+  for (let i = 0; i < pts.length; i++){
+    const [x0,y0] = pts[i], [x1,y1] = pts[(i+1)%pts.length];
+    const f = x0*y1 - x1*y0; a += f; cx += (x0+x1)*f; cy += (y0+y1)*f;
+  }
+  if (Math.abs(a) < 1e-6){
+    const ax = pts.reduce((s,p)=>s+p[0],0)/pts.length;
+    const ay = pts.reduce((s,p)=>s+p[1],0)/pts.length;
+    return [ax, ay];
+  }
+  a *= 0.5; return [cx/(6*a), cy/(6*a)];
+}
+function viewToPx(vx, vy){
+  const fr = frame.getBoundingClientRect();
+  const st = stageB.getBoundingClientRect();
+  const x = (vx / VIEW_W) * fr.width + (fr.left - st.left);
+  const y = (vy / VIEW_H) * fr.height + (fr.top - st.top);
+  return [x, y];
+}
+function placeChipAndLine(z){
+  const [cx, cy] = z._centroid;
+  const [px, py] = viewToPx(cx, cy);
+  const st = stageB.getBoundingClientRect();
+  const chipW = pinChip.offsetWidth || 210;
+  const chipH = pinChip.offsetHeight || 82;
+  const onLeftHalf = (cx < VIEW_W/2);
+  let chipX = onLeftHalf ? (st.width - chipW - 8) : 8;
+  let chipY = py - chipH/2;
+  chipY = Math.max(8, Math.min(st.height - chipH - 8, chipY));
+  pinChip.style.left = chipX + 'px';
+  pinChip.style.top  = chipY + 'px';
+  const chipAnchorX = (chipX > px) ? chipX : (chipX + chipW);
+  const chipAnchorY = chipY + chipH/2;
+  connector.innerHTML =
+    '<line x1="'+px+'" y1="'+py+'" x2="'+chipAnchorX+'" y2="'+chipAnchorY+'"></line>' +
+    '<circle cx="'+px+'" cy="'+py+'" r="3.5"></circle>';
+}
+function showZone(z, pathEl){
+  activeZone = z;
+  pcSwatch.style.background = z.hex;
+  pcName.textContent = z.name;
+  pcPms.textContent = z.pms;
+  pcStyle.textContent = z.garment;
+  placeChipAndLine(z);
+  pinChip.classList.add('show');
+  connector.classList.add('show');
+  [...hotspots.children].forEach(p => p.classList.remove('active'));
+  if (pathEl) pathEl.classList.add('active');
+}
+function hideZone(){
+  activeZone = null;
+  pinChip.classList.remove('show');
+  connector.classList.remove('show');
+  [...hotspots.children].forEach(p => p.classList.remove('active'));
+}
+function renderModel(i){
+  const m = MODELS[i];
+  dimg.src = m.img;
+  hotspots.innerHTML = '';
+  m.zones.forEach((z) => {
+    z._centroid = centroid(parsePath(z.path));
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', z.path);
+    p.addEventListener('mouseenter', () => showZone(z, p));
+    p.addEventListener('mouseleave', hideZone);
+    hotspots.appendChild(p);
+  });
+  hideZone();
+  [...swatchWrap.children].forEach((d, di) => d.classList.toggle('on', di === i));
+}
+window.addEventListener('resize', () => { if (activeZone) placeChipAndLine(activeZone); });
+
+MODELS.forEach((m, i) => {
+  const b = document.createElement('button');
+  b.style.background = m.swatch;
+  b.setAttribute('aria-label', 'View color ' + (i+1));
+  b.addEventListener('click', () => { current = i; renderModel(i); });
+  swatchWrap.appendChild(b);
+});
+renderModel(0);
+</script>
+</body>
+</html>
